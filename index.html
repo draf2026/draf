@@ -3161,16 +3161,16 @@ async function openPaymentModal() {
   showToast('🔄 Reindirizzamento al pagamento sicuro...');
 
   try {
-    const res = await fetch('https://europe-west1-draf-2026.cloudfunctions.net/createCheckoutSession', {
-      method: 'POST',
+    const res = await fetch('https://createcheckoutsession-j7qtvls6va-ew.a.run.app', {
+    method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         propertyId: String(currentProperty.id),
-        propertyName: currentProperty.name,
+        casa: currentProperty.casa,
         checkIn: calCheckIn,
         checkOut: calCheckOut,
-        nights, pricePerNight,
-        guestName: nome, guestEmail: email
+        name: nome,
+        email: email
       })
     });
     const data = await res.json();
